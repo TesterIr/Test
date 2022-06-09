@@ -11,7 +11,13 @@ class CatalogPage extends Page {
     get addToCartButton() { return $('#content > div.product-list > div > div.right > div > input')};
     get cartWithItem() { return $('#cart-total')};
     get checkoutLink() { return $('#cart > div.content > div.checkout > a:nth-child(2)')};
+    get TopLoginButton () { return $('#welcome > table > tbody > tr > td:nth-child(1) > a > input'  )};
+    get UserNameField () { return $('#content > div.login-content > div.right > form > div > input[type=text]:nth-child(4)')};
+    get UserPasswordField () { return $('#content > div.login-content > div.right > form > div > input[type=password]:nth-child(9)')};
     
+
+
+
     /**
      * Method to click first item
      */
@@ -20,6 +26,11 @@ class CatalogPage extends Page {
         this.firstItem.click();
     }
 
+    clickTopLoginButton() {
+        utilObj.waitForDefaultTimeOut()
+        this.TopLoginButton.click();
+    }
+    
     clickOpenCartTotal() {
         utilObj.waitForDefaultTimeOut();
         this.cartWithItem.click();
@@ -140,7 +151,23 @@ class CatalogPage extends Page {
            //super.dashboardLink.click();
            //allure.addDescription("open the server instance");
         }
-    }
+    };
+
+    fillUserNameField()   {
+        utilObj.waitForDefaultTimeOut();
+        this.UserName.click();
+        this.UserNameField.clearVelue();
+        this.UserNameField.setValue('aronson.irina@gmail.com');
+    };
+
+    fillPasswordField()   {
+        utilObj.waitForDefaultTimeOut();
+        this.Password.click();
+        this.PasswordField.clearVelue();
+        this.PasswordField.setValue('Gammakoolitus1');
+    };
+
+    
 
 }
 //module.exports = new HomePage();
